@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input-area {
+  @apply flex w-[564px] flex-col;
+}
+
+.span-error {
+  @apply text-xs text-custom-red-100;
+}
+
+.input-radio {
+  @apply text-[16px] font-normal text-custom-white-100;
+}
