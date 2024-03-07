@@ -1,7 +1,3 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ZodString, string, z } from "zod";
-
 import {
   Select,
   SelectContent,
@@ -23,108 +19,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { RadioGroup } from "@radix-ui/react-radio-group";
-import { Label } from "@/components/ui/label";
 import { RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
-
-const formSchema = z
-  .object({
-    fullname: z
-      .string()
-      .min(1, "Nome obrigatório")
-      .max(100, "Nome muito longo"),
-    documentNumber: z
-      .string()
-      .min(1, "O CPF é obrigatório")
-      .transform((value) => value.replace(/\D/g, "")),
-
-    birthdate: z.string().refine((value) => {}, {
-      message: "Você deve ser maior de idade para continuar.",
-    }),
-    phoneNumber: z
-      .string()
-      .min(11, "Contato obrigatório")
-      .transform((value) => value.replace(/\D/g, "")),
-    motherName: z.string().min(1, "Nome obrigatório"),
-    address: z.object({
-      zipCode: z
-        .string()
-        .min(9, "CEP obrigatório")
-        .transform((value) => value.replace(/[^0-9]/g, "")),
-      state: z.string().min(1, "Selecione o Estado").max(2),
-      city: z.string().min(1, "Selecione a Cidade"),
-      street: z.string().min(1, "Informe a Rua"),
-      district: z.string().min(1, "Informe o Bairro"),
-      number: z.string().min(1, "Informe o Número da Casa"),
-      complement: z.string().optional(),
-    }),
-    minimumWage: z.string().transform((value) => {
-      return parseFloat(value);
-    }),
-    educationLevel: z.enum(
-      [
-        "Ensino_Fundamental_Completo",
-        "Ensino_Medio_Completo",
-        "Ensino_Superior_Completo",
-      ],
-      {
-        required_error: "Voce precisa informar o seu nivel de escolaridade.",
-      },
-    ),
-    email: z.string().min(1, "Email obrigatório").email("Email inválido"),
-    password: z
-      .object({
-        mainPassword: z
-          .string()
-          .min(10, "A senha precisa ter no mínimo 10 caracteres"),
-        confirmPassword: z.string(),
-      })
-      .refine((data) => data.mainPassword === data.confirmPassword, {
-        message: "As senhas precisam ser iguais",
-        path: ["confirmPassword"],
-      }),
-  })
-  .transform((field) => ({
-    ...field,
-  }));
-
-type FormProps = z.infer<typeof formSchema>;
+import { InputMasked } from "./components/Mask/inputMask";
+import { useCep } from "./hooks/useCep";
 
 export default function ProfileForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    criteriaMode: "all",
-    mode: "all",
-    defaultValues: {
-      fullname: "",
-      documentNumber: "",
-      birthdate: "",
-      phoneNumber: "",
-      motherName: "",
-      address: {
-        zipCode: "",
-        state: "",
-        city: "",
-        street: "",
-        district: "",
-        number: "",
-        complement: "",
-      },
-      minimumWage: Number(),
-      email: "",
-      password: {
-        mainPassword: "",
-        confirmPassword: "",
-      },
-    },
-  });
-
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    alert(JSON.stringify(data, null, 2));
-  }
+  const { form, onSubmit } = useCep();
 
   return (
-    <div className="font-noto flex min-h-screen flex-col items-center bg-custom-bg-100 text-custom-white-100">
+    <div className="flex min-h-screen flex-col items-center bg-custom-bg-100 font-noto text-custom-white-100">
       <div className="mt-[52px] flex w-[760px] items-center justify-items-center bg-white">
         <Form {...form}>
           <form
@@ -160,9 +64,9 @@ export default function ProfileForm() {
                     CPF
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
-                      placeholder="898.811.514-73"
+                    <InputMasked
+                      mask="999.999.999-99"
+                      placeholder="000.000.000-00"
                       {...field}
                     />
                   </FormControl>
@@ -181,8 +85,9 @@ export default function ProfileForm() {
                   </FormLabel>
                   <FormControl>
                     <Input
+                      type="date"
                       className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[17px]"
-                      placeholder="04/08/2006"
+                      placeholder="00/00/0000"
                       {...field}
                     />
                   </FormControl>
@@ -513,11 +418,7 @@ export default function ProfileForm() {
               name="fullname"
               render={({ field }) => (
                 <FormItem className=" mt-8 flex  w-[564px] gap-[16px]">
-                  <Switch
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                    aria-readonly
-                  />
+                  <Switch aria-readonly />
                   <div className="space-y-0.5 text-[16px]">
                     <FormDescription>Ver Senha</FormDescription>
                   </div>
@@ -527,7 +428,7 @@ export default function ProfileForm() {
 
             <Button
               type="submit"
-              className="mt-8 h-[56px] w-[564px] gap-[10px] rounded-[8px] bg-custom-purple-200 p-4 text-[16px] font-light hover:bg-custom-purple-100 "
+              className="mt-8 h-[56px] w-[564px] gap-[10px] rounded-[8px] bg-custom-purple-200 p-4 text-[16px] font-light hover:bg-custom-purple-100"
             >
               Cadastrar
             </Button>
