@@ -1,15 +1,14 @@
 import { zipCodeMask } from "@/components/Mask/cep";
-import { formSchema } from "@/schema";
+import { formSchema } from "../utils/schema";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { useCallback, useEffect } from "react";
 import axios from "axios";
 import { z } from "zod";
 
-import { FormProps } from "@/types";
-import { AddressProps } from "@/types";
+import { FormProps, AddressProps } from "../utils/types";
+import { useCallback, useEffect } from "react";
 
 export const useCep = () => {
   const form = useForm<z.infer<typeof formSchema>>({
