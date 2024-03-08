@@ -1,4 +1,5 @@
 import { z } from "zod";
+
 import { subYears, parseISO, isBefore } from "date-fns";
 
 export const formSchema = z
@@ -12,17 +13,20 @@ export const formSchema = z
       .min(1, "O CPF é obrigatório")
       .transform((value) => value.replace(/\D/g, "")),
 
-    birthdate: z.string().refine(
-      (value) => {
-        const birthdayDate = parseISO(value);
-        const today = new Date();
-        const legalAgeDate = subYears(today, 18);
-        return isBefore(birthdayDate, legalAgeDate);
-      },
-      {
-        message: "Você deve ser maior de idade para continuar.",
-      },
-    ),
+    birthdate: z
+      .string()
+      .refine(
+        (value) => {
+          const birthdayDate = parseISO(value);
+          const today = new Date();
+          const legalAgeDate = subYears(today, 18);
+          return isBefore(birthdayDate, legalAgeDate);
+        },
+        {
+          message: "Você deve ser maior de idade para continuar.",
+        },
+      )
+      .transform((value) => value.replace(/\D/g, "")),
     phoneNumber: z
       .string()
       .min(11, "Contato obrigatório")
@@ -41,7 +45,7 @@ export const formSchema = z
       complement: z.string().optional(),
     }),
     minimumWage: z.string().transform((value) => {
-      return parseFloat(value);
+      return parseInt(value);
     }),
     educationLevel: z.enum(
       [

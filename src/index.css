@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .input-area {
-  @apply flex w-[564px] flex-col;
+  @apply h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-red-100;
 }
 
 .span-error {

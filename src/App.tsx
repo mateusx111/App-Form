@@ -28,7 +28,7 @@ export default function ProfileForm() {
   const { form, onSubmit } = useCep();
 
   return (
-    <div className="flex min-h-screen flex-col items-center bg-custom-bg-100 font-noto text-custom-white-100">
+    <div className=" flex min-h-screen flex-col items-center bg-custom-bg-100 font-noto text-custom-white-100">
       <div className="mt-[52px] flex w-[760px] items-center justify-items-center bg-white">
         <Form {...form}>
           <form
@@ -45,12 +45,12 @@ export default function ProfileForm() {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       placeholder="Cauê Ian Benedito Araújo"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className=" text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -67,10 +67,11 @@ export default function ProfileForm() {
                     <InputMasked
                       mask="999.999.999-99"
                       placeholder="000.000.000-00"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -86,12 +87,12 @@ export default function ProfileForm() {
                   <FormControl>
                     <Input
                       type="date"
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[17px]"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       placeholder="00/00/0000"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -105,13 +106,14 @@ export default function ProfileForm() {
                     Contato
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                    <InputMasked
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       placeholder="(67) 98951-81186"
+                      mask="(99) 99999-9999"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -126,12 +128,12 @@ export default function ProfileForm() {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       placeholder="Josefa Isabela"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -145,13 +147,14 @@ export default function ProfileForm() {
                     CEP
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                    <InputMasked
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       placeholder="79105-568"
+                      mask="99999-999"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -174,9 +177,9 @@ export default function ProfileForm() {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="AP">AP</SelectItem>
-                      <SelectItem value="PA">PA</SelectItem>
-                      <SelectItem value="MT">MT</SelectItem>
+                      <SelectItem value="ap">AP</SelectItem>
+                      <SelectItem value="pa">PA</SelectItem>
+                      <SelectItem value="mt">MT</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -222,12 +225,12 @@ export default function ProfileForm() {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       placeholder="Rua Amarilis"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -242,12 +245,12 @@ export default function ProfileForm() {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                      className="focus:outline-custom-purple-200] h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
                       placeholder="Residencial nelson Trad"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -262,12 +265,12 @@ export default function ProfileForm() {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       placeholder="314"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -282,12 +285,12 @@ export default function ProfileForm() {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[17px]"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       placeholder="Opcional"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -302,12 +305,12 @@ export default function ProfileForm() {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       placeholder="caue_ian_araujo@sobraer.com.br"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -321,13 +324,15 @@ export default function ProfileForm() {
                     Renda Mensal
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
-                      placeholder="R$ 800,00"
+                    <InputMasked
+                      form="form.setValue('minimumWage')"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
+                      placeholder="R$ 9999,99"
+                      mask="R$ 9999,99"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -384,11 +389,11 @@ export default function ProfileForm() {
                   <FormControl>
                     <Input
                       type="password"
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -404,11 +409,11 @@ export default function ProfileForm() {
                   <FormControl>
                     <Input
                       type="password"
-                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px]"
+                      className="h-[56px] rounded-[8px] border border-custom-white-200 p-[16px] text-[16px] focus:outline-custom-purple-200"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-[12px] font-normal" />
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -416,7 +421,7 @@ export default function ProfileForm() {
             <FormField
               control={form.control}
               name="fullname"
-              render={({ field }) => (
+              render={() => (
                 <FormItem className=" mt-8 flex  w-[564px] gap-[16px]">
                   <Switch aria-readonly />
                   <div className="space-y-0.5 text-[16px]">
